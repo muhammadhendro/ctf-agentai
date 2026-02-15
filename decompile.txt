@@ -1,0 +1,220 @@
+int *__fastcall sub_843DF(_DWORD *a1, __int64 a2, __int64 a3, unsigned int a4)
+{
+  unsigned __int64 v4; // rbp
+  int *result; // rax
+  char v6; // dl
+  unsigned int v7; // ecx
+  int v8; // edx
+  bool v9; // cf
+  bool v10; // zf
+
+  result = (_DWORD *)((char *)a1 + v4);
+  v6 = *((_BYTE *)a1 + v4);
+  if ( a4 <= 5 )
+    goto LABEL_9;
+  if ( v4 > 0xFFFFFFFFFFFFFFFCLL )
+    goto LABEL_9;
+  v7 = a4 - 4;
+  do
+  {
+    v8 = *result++;
+    v9 = v7 < 4;
+    v7 -= 4;
+    *a1++ = v8;
+  }
+  while ( !v9 );
+  v10 = v7 == -4;
+  a4 = v7 + 4;
+  v6 = *(_BYTE *)result;
+  if ( !v10 )
+  {
+LABEL_9:
+    do
+    {
+      result = (int *)((char *)result + 1);
+      *(_BYTE *)a1 = v6;
+      --a4;
+      v6 = *(_BYTE *)result;
+      a1 = (_DWORD *)((char *)a1 + 1);
+    }
+    while ( a4 );
+  }
+  return result;
+}
+
+// positive sp value has been detected, the output may be wrong!
+_BYTE *__fastcall sub_8441D(_DWORD *a1, _BYTE *a2, __int64 a3, __int64 a4, char a5)
+{
+  int v5; // ebx
+  unsigned __int64 v6; // rbp
+  __int64 (__fastcall *v7)(_DWORD *, _BYTE *, __int64); // r11
+  bool v8; // cf
+  int v9; // ebx
+  int v10; // ett
+  int v11; // eax
+  unsigned int v12; // eax
+  bool v13; // cf
+  int v14; // ebx
+  int v15; // ett
+  unsigned int v16; // eax
+  int v17; // eax
+  int v18; // ecx
+  __int64 v19; // rdx
+  __int64 (__fastcall *v20)(_DWORD *, _BYTE *, __int64, _QWORD); // r11
+  unsigned int v21; // eax
+  __int64 v22; // rdx
+  __int64 (__fastcall *v23)(_DWORD *, _BYTE *, __int64, __int64); // r11
+  __int64 v24; // rcx
+  int v25; // ecx
+  bool v26; // cf
+  int v27; // ebx
+  int v28; // ett
+  _BYTE *result; // rax
+  __int64 (__fastcall *v30)(_DWORD *, _BYTE *, __int64); // [rsp-30h] [rbp-30h]
+  __int64 v31; // [rsp-28h] [rbp-28h]
+  int v32; // [rsp-20h] [rbp-20h]
+  _DWORD *v33; // [rsp-18h] [rbp-18h]
+
+  v7 = v30;
+  if ( a5 == 2 )
+  {
+    while ( 1 )
+    {
+      while ( 1 )
+      {
+        LOBYTE(a3) = *a2;
+        v8 = __CFADD__(v5, v5);
+        v5 *= 2;
+        if ( !v5 )
+        {
+          v9 = *(_DWORD *)a2;
+          v8 = (unsigned __int64)a2 < 0xFFFFFFFFFFFFFFFCLL;
+          a2 += 4;
+          v10 = v8 + v9;
+          v8 = __CFADD__(v8, v9) | __CFADD__(v9, v10);
+          v5 = v9 + v10;
+          LOBYTE(a3) = *a2;
+        }
+        if ( !v8 )
+          break;
+        ++a2;
+        *(_BYTE *)a1 = a3;
+        a1 = (_DWORD *)((char *)a1 + 1);
+      }
+      do
+      {
+        v11 = v7(a1, a2, a3);
+        v12 = v11 + v8 + v11;
+        v13 = __CFADD__(v5, v5);
+        v5 *= 2;
+        if ( !v5 )
+        {
+          v14 = *(_DWORD *)a2;
+          v8 = (unsigned __int64)a2 < 0xFFFFFFFFFFFFFFFCLL;
+          a2 += 4;
+          v15 = v8 + v14;
+          v13 = __CFADD__(v8, v14) | __CFADD__(v14, v15);
+          v5 = v14 + v15;
+          LOBYTE(a3) = *a2;
+        }
+      }
+      while ( !v13 );
+      v8 = v12 < 3;
+      v16 = v12 - 3;
+      if ( !v8 )
+      {
+        a3 = (unsigned __int8)a3;
+        ++a2;
+        v17 = ~((unsigned __int8)a3 | (v16 << 8));
+        if ( !v17 )
+          goto LABEL_20;
+        v6 = v17;
+      }
+      v7(a1, a2, a3);
+      v21 = v20(a1, a2, v19, v18 + (unsigned int)v8 + v18);
+      LODWORD(v24) = v24 + v8 + (_DWORD)v24;
+      if ( !(_DWORD)v24 )
+      {
+        v24 = v21;
+        do
+        {
+          v21 = v23(a1, a2, v22, v24);
+          v24 = v25 + (unsigned int)v8 + v25;
+          v26 = __CFADD__(v5, v5);
+          v5 *= 2;
+          if ( !v5 )
+          {
+            v27 = *(_DWORD *)a2;
+            v8 = (unsigned __int64)a2 < 0xFFFFFFFFFFFFFFFCLL;
+            a2 += 4;
+            v28 = v8 + v27;
+            v26 = __CFADD__(v8, v27) | __CFADD__(v27, v28);
+            v5 = v27 + v28;
+          }
+        }
+        while ( !v26 );
+      }
+      sub_843DF(a1, (__int64)a2, v22, v21 + (v6 < 0xFFFFFFFFFFFFF300LL) + (_DWORD)v24);
+    }
+  }
+  a2 = a1;
+LABEL_20:
+  result = &a2[-v31];
+  *v33 = (_DWORD)a1 - v32;
+  return result;
+}
+
+// positive sp value has been detected, the output may be wrong!
+void __fastcall sub_8459C(__int64 a1, __int64 a2, int a3)
+{
+  char *v3; // rbp
+  unsigned __int64 v4; // rdi
+  unsigned __int64 v5; // rax
+  _DWORD *v6; // rbx
+  unsigned __int64 v7; // rdx
+  __int64 v8; // rcx
+  unsigned __int64 v9; // rdi
+  signed __int64 v10; // rax
+  signed __int64 v11; // rdx
+  signed __int64 v12; // r13
+  signed __int64 v13; // rax
+  _QWORD v14[3]; // [rsp-20h] [rbp-28h] BYREF
+  signed __int64 v15; // [rsp-8h] [rbp-10h]
+  unsigned __int64 start; // [rsp+0h] [rbp-8h]
+
+  v4 = start;
+  start = sys_open((const char *)start, 0, a3);
+  v5 = *(_DWORD *)(v4 + 15) & 0xFFFFFFFE;
+  v6 = (_DWORD *)(v4 + 19);
+  v7 = *(unsigned int *)(v4 + 19);
+  v8 = (__int64)&v3[-*(unsigned int *)(v3 - 11) - 11];
+  v9 = start;
+  start = v7;
+  v15 = v5;
+  v14[2] = v9;
+  v14[1] = v8;
+  v10 = sys_mmap(0, v7, 3u, 0x22u, 0xFFFFFFFF, 0);
+  v15 = v10;
+  v11 = v10;
+  LODWORD(v10) = *v6;
+  v14[0] = v10;
+  v12 = v11;
+  LODWORD(v10) = v6[1];
+  ((void (__fastcall *)(_DWORD *, signed __int64, signed __int64, _QWORD *, _QWORD))v3)(
+    v6 + 3,
+    v10,
+    v11,
+    v14,
+    (unsigned int)v6[2]);
+  v13 = sys_mprotect(v15, start, 5u);
+  __asm { jmp     r13 }
+}
+
+_BYTE *__fastcall start(_BYTE *a1, __int64 a2)
+{
+  _DWORD *v2; // rdx
+  char v3; // r8
+
+  ((void (__fastcall *)(_BYTE *, __int64))loc_84618)(a1, a2);
+  return sub_8441D(v2, a1, (__int64)v2, 0, v3);
+}
